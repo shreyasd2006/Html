@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HealthInsight Hub: Interactive health symptom checker for educational use. No data stored. Not a replacement for medical advice.">
+    <meta name="robots" content="index, follow">
+    <title>HealthInsight Hub</title> <link rel="stylesheet" href="exp1_css.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="logos_ico.ico">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <img src="output-onlinepngtools (1).png" alt="HealthInsight Hub LOGO">
+            <span>HealthInsight Hub</span>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button onclick="toggleDarkMode()" id="themeToggle" class="theme-btn">🌙 Dark Mode</button>
+                <div class="dropdown">
+                    <button class="dropbtn">Login</button>
+                    <div class="dropdown-content">
+                        <a href="user_login.html" target="_blank">User</a>
+                        <a href="admin_login.html" target="_blank">Admin</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section fade-in">
+            <div class="hero-illustration">
+                <img src="new body.png" alt="Person interacting with health app on phone" class="phone_guy">
+            </div>
+            <div class="hero-text-content">
+                <p class="welcome">Welcome to HealthHub Insight</p>
+                <h1>
+                    Understand Your <span class="symp">Health</span>
+                    <br>
+                    <span class="symp">Symptoms</span>,
+                    <br>
+                    Interactively
+                </h1>
+                <p class="tagline">Click through our guided visual tool to explore potential causes based on your symptoms. Simple, intuitive, and informative.</p>
+                <div class="diagnosis-dropdown">
+                    <button class="diagnosis-dropbtn" onclick="openPopup()">Start Your Diagnosis Guide</button>
+                </div>
+            </div>
+        </section>
+
+        <div id="popupModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closePopup()">&times;</span>
+                <iframe src="indexstart.html" frameborder="0" style="width:100%; height:80vh;"></iframe>
+            </div>
+        </div>
+
+        <section id="features">
+            <h2 class="section-title">Why Use HealthInsight Hub?</h2>
+            <div class="feature-grid">
+                <div class="feature-item interactive">
+                    <img src="why.png" alt="Interactive Visual Guide" class="feature-img">
+                    <div class="feature-description">
+                        <h3>👆 Interactive Visual Guide</h3>
+                        <p>Simply click on the body area you're concerned about to begin.</p>
+                    </div>
+                </div>
+                <div class="feature-item ques">
+                    <img src="Guiding-Questions.png" alt="Guided Questions" class="feature-img">
+                    <div class="feature-description">
+                        <h3>🗨 Guided Questions</h3>
+                        <p>Answer straightforward questions that adapt based on your responses.</p>
+                    </div>
+                </div>
+                <div class="feature-item poten">
+                    <img src="insights.avif" alt="Potential Insights" class="feature-img">
+                    <div class="feature-description">
+                        <h3>💡 Potential Insights</h3>
+                        <p>Receive suggestions about possible conditions related to your symptoms.</p>
+                    </div>
+                </div>
+                <div class="feature-item privacy">
+                    <img src="privacy.png" alt="Privacy Focused" class="feature-img">
+                    <div class="feature-description">
+                        <h3>🛡️ Privacy Focused</h3>
+                        <p>No personal data is stored. Your exploration is completely anonymous.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <section id="faq" class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="testimonial-container"> <div class="testimonial active">
+                    <h2>Is this tool a replacement for a doctor?</h2>
+                    <p>For information only — not a substitute for medical advice. Always consult a healthcare professional.</p>
+                </div>
+                <div class="testimonial">
+                    <h2>Is my data saved?</h2>
+                    <p>This is a frontend-only app. No data is collected, stored, or sent—everything stays in your browser.</p>
+                </div>
+                <div class="testimonial">
+                    <h2> How accurate are the suggestions?</h2>
+                    <p>This tool can't consider your full medical context. Its suggestions are limited and should only guide conversations with your doctor.</p>
+                </div>
+                <div class="testimonial">
+                    <h2>What technology was used to build this?</h2>
+                    <p>This tool is built with HTML, CSS, and JavaScript for structure, styling, and interactivity, using SVGs for body diagrams.</p>
+                </div>
+            </div>
+            <div class="dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <section id="about" class="about-section container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About HealthInsight Hub</h2>
+                    <p>HealthInsight Hub was created as a project to explore how interactive web technologies can make health information more accessible and understandable. Our goal is to provide a user-friendly visual tool that helps individuals explore potential health concerns by guiding them through symptom-based questions.</p>
+                    <p>We believe that informed users can have more productive conversations with healthcare professionals. However, this tool is purely informational and educational. It does **not** provide medical advice, diagnosis, or treatment. Always consult with a qualified doctor or healthcare provider for any health concerns.</p>
+                </div>
+                <div class="about-image">
+                    </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <section class="cta-bottom-section">
+            <div class="container cta-bottom-content">
+                <h2>Ready to Explore?</h2>
+                <p>Start the interactive guide now. Remember to consult a professional for actual medical advice.</p>
+                <div class="diagnosis-dropdown">
+                    <button class="diagnosis-dropbtn">Start Diagnosis Guide</button>
+                    <div class="diagnosis-dropdown-content">
+                        <a href="index.html" target="_blank">Female Diagnosis Tool</a>
+                        <a href="indexM.html" target="_blank">Male Diagnosis Tool</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a> |
+                <a href="#about">About Us</a> |
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="footer-copyright">
+                &copy; <span id="currentYear"></span> HealthInsight Hub Project. All Rights Reserved.
+                <br>Not for actual medical use.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Existing JavaScript functions
+        function toggleDarkMode() {
+            const body = document.body;
+            const themeBtn = document.getElementById('themeToggle');
+            body.classList.toggle('dark-mode');
+            if(body.classList.contains('dark-mode')) {
+                themeBtn.innerHTML = '☀️ Light Mode';
+            } else {
+                themeBtn.innerHTML = '🌙 Dark Mode';
+            }
+            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+        }
+
+        if(localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('themeToggle').innerHTML = '☀️ Light Mode';
+        }
+
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+
+        function showTestimonial(index) {
+            testimonials.forEach((t, i) => {
+                t.classList.toggle('active', i === index);
+                dots[i].classList.toggle('active', i === index);
+            });
+        }
+
+        function nextTestimonial() {
+            currentIndex = (currentIndex + 1) % testimonials.length;
+            showTestimonial(currentIndex);
+        }
+
+        setInterval(nextTestimonial, 4000);
+
+        function openPopup() {
+            document.getElementById('popupModal').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popupModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('popupModal');
+            if (event.target === modal) {
+                closePopup();
+            }
+        }
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

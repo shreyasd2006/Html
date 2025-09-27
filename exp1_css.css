@@ -1,0 +1,978 @@
+/* --- CSS Variables (for easy theme management) --- */
+:root {
+    --primary-blue: #2A487C; /* A richer, deeper blue */
+    --accent-teal: #36C2CE; /* Vibrant teal for highlights */
+    --light-text: #F8F8F8;
+    --dark-text: #333;
+    --white-bg: #FFFFFF;
+    --light-blue-bg: #E0F0FF; /* Lighter background blue for sections */
+    --header-bg-light: rgb(180, 223, 245); /* Your existing header color */
+    --header-shadow: rgba(0, 0, 0, 0.15);
+    --button-bg-light: rgb(59, 104, 151); /* Your existing button color */
+    --button-hover-light: rgb(45, 85, 125);
+    --section-bg-light: #517e8a; /* For testimonial/FAQ section */
+
+    /* Dark Mode Colors */
+    --dark-mode-bg: #1A1A2E; /* Darker, more sophisticated background */
+    --dark-mode-header-bg: #111122;
+    --dark-mode-text: #EAEAEA;
+    --dark-mode-accent: #E94560; /* A contrasting accent for dark mode */
+    --dark-mode-button-bg: #333;
+    --dark-mode-button-hover: #555;
+    --dark-mode-section-bg: #2C2C4A;
+}
+
+/* --- Base Styles & Resets --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* Using Inter as a primary font */
+    background-color: var(--header-bg-light); /* Start with a base background */
+    color: var(--dark-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition for dark mode */
+}
+
+/* --- Containers & Layout Helpers --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Consistent horizontal padding */
+}
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    color: var(--dark-text);
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 80px; /* Space from previous section */
+}
+
+/* --- Header Styling --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%; /* Adjusted padding */
+    background-color: var(--header-bg-light);
+    box-shadow: 0 3px 10px var(--header-shadow); /* Stronger shadow */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.4em; /* Slightly smaller logo text */
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
+.logo img {
+    width: 100px; /* Adjusted logo width */
+    height: auto;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav ul li a {
+    color: var(--dark-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: color 0.3s ease, transform 0.2s ease;
+    position: relative; /* For underline effect */
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-teal); /* Underline color */
+    transition: width 0.3s ease;
+}
+
+.main-nav ul li a:hover::after {
+    width: 100%;
+}
+
+.main-nav ul li a:hover {
+    color: var(--accent-teal);
+    transform: translateY(-2px); /* Subtle lift */
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Dark Mode Toggle Button */
+.theme-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--button-bg-light); /* Add border for light mode */
+    border-radius: 25px; /* More rounded */
+    background: transparent; /* Transparent background */
+    color: var(--button-bg-light); /* Text color from primary button */
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.theme-btn:hover {
+    background-color: var(--button-bg-light);
+    color: var(--white-bg);
+}
+
+/* Login Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block; /* Essential for dropdown */
+    z-index: 1001;
+}
+
+.dropbtn {
+    padding: 10px 20px; /* More generous padding */
+    border: none;
+    border-radius: 8px; /* Slightly more rounded */
+    background-color: var(--button-bg-light);
+    color: var(--white-bg);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.dropbtn:hover {
+    background-color: var(--button-hover-light);
+    transform: translateY(-2px); /* Subtle lift */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px); /* Space below button */
+    background-color: var(--white-bg);
+    min-width: 140px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    pointer-events: none; /* Prevents interaction when hidden */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Control visibility with JavaScript or 'block' */
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; /* Enable interaction when visible */
+}
+
+.dropdown-content a {
+    color: var(--dark-text);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--light-blue-bg);
+}
+
+/* --- Hero Section Styling --- */
+.hero-section {
+    display: flex;
+    flex-direction: row; /* Default desktop layout */
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+    padding: 120px 5% 80px; /* Top padding to clear fixed header */
+    min-height: 100vh; /* Full viewport height */
+    position: relative;
+    overflow: hidden;
+    background-image: url('bluee.png'); /* Your current background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-illustration {
+    flex-shrink: 0; /* Prevents image from shrinking */
+    max-width: 50%; /* Control image width on desktop */
+    padding-right: 50px; /* Space between image and text */
+    display: flex;
+    justify-content: center; /* Center image within its container */
+    align-items: center;
+}
+
+.hero-illustration img {
+    max-width: 480px; /* Max size for the illustration */
+    height: auto;
+    display: block;
+    animation: floatEffect 3s ease-in-out infinite alternate; /* Subtle floating */
+}
+
+@keyframes floatEffect {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-15px); }
+}
+
+.hero-text-content {
+    max-width: 600px; /* Control text block width */
+    text-align: left;
+    color: var(--dark-text);
+}
+
+.welcome {
+    font-size: 1.2em;
+    color: #0d6258; /* A more subtle greenish tone */
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.hero-text-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.8em; /* Larger and more impactful */
+    line-height: 1.1;
+    margin-bottom: 25px;
+    color: var(--dark-text); /* Ensure text color is inherited */
+    animation: textSlideIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    white-space: nowrap; /* Keep lines together */
+}
+
+.hero-text-content h1 .symp {
+    color: var(--accent-teal); /* Teal accent for "Health Symptoms" */
+    animation: highlightPulse 2.5s ease-in-out infinite;
+}
+
+.hero-text-content h1 br {
+    display: block; /* Ensure line breaks are visible */
+    margin-bottom: 5px; /* Add slight space between lines */
+}
+
+.tagline {
+    font-size: 1.15em;
+    color: rgba(84, 83, 83, 0.9); /* Slightly darker grey for better contrast */
+    margin-bottom: 40px;
+    line-height: 1.7;
+}
+
+/* Start Diagnosis Guide Button */
+.diagnosis-dropbtn {
+    padding: 18px 35px; /* More padding for a larger button */
+    font-weight: 700; /* Bolder text */
+    font-size: 1.1em;
+    background-color: var(--accent-teal); /* Use accent color */
+    color: var(--white-bg);
+    border: none;
+    border-radius: 10px; /* More rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(54, 194, 206, 0.3); /* Shadow reflecting accent color */
+}
+
+.diagnosis-dropbtn:hover {
+    background-color: #2CAFB6; /* Slightly darker teal on hover */
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 12px 25px rgba(54, 194, 206, 0.4);
+}
+
+.diagnosis-dropdown-content {
+    top: calc(100% + 10px); /* Position dropdown below button */
+    left: 0;
+    min-width: 250px;
+}
+
+/* --- Features Section --- */
+#features {
+    background-color: var(--light-blue-bg); /* Lighter background for this section */
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsive grid */
+    gap: 60px 40px; /* Space between grid items */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: row; /* Icon/image beside text */
+    align-items: center;
+    gap: 30px;
+    text-align: left; /* Align text within item */
+    padding: 25px;
+    background-color: var(--white-bg);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Stronger but softer shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature-item img {
+    width: 120px; /* Consistent image size */
+    height: 120px;
+    object-fit: contain; /* Ensure image fits */
+    border-radius: 50%;
+    flex-shrink: 0; /* Prevent image from shrinking */
+    background-color: rgba(54, 194, 206, 0.1); /* Subtle background for feature icon */
+    padding: 15px;
+}
+
+.feature-description h3 {
+    font-size: 1.6em;
+    color: var(--dark-text);
+    margin-bottom: 10px;
+}
+
+.feature-description p {
+    font-size: 1.05em;
+    color: rgba(84, 83, 83, 0.85);
+}
+
+
+/* Remove original positioning for images and text */
+.pp, .ppp, .pp1, .ppp1, .pppp1, .pp2, .ppp2, .pp3, .ppp3, .pppp3, .inter-img, .guided_img, .bulb, .priv, .why {
+    position: static; /* Remove absolute positioning */
+    margin: 0; /* Reset margins */
+    padding: 0;
+}
+
+/* --- FAQ / Testimonial Section --- */
+.testimonial-section {
+    background-color: var(--section-bg-light); /* Consistent background */
+    color: var(--white-bg);
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.testimonial-section .section-title { /* Style title for this section */
+    color: var(--white-bg);
+    margin-bottom: 40px;
+}
+
+.testimonial-container {
+    min-height: 200px; /* Adjust height based on content */
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden; /* Hide overflowing testimonials */
+}
+
+.testimonial {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    padding: 20px;
+}
+
+.testimonial.active {
+    display: block;
+    opacity: 1;
+}
+
+.testimonial h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.testimonial p {
+    font-size: 1.15em;
+    font-style: italic;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 750px;
+}
+
+.dots {
+    margin-top: 40px;
+    display: flex; /* Use flexbox for dots */
+    justify-content: center;
+    gap: 12px; /* Space between dots */
+}
+
+.dot {
+    height: 10px;
+    width: 30px; /* Slightly wider dot for emphasis */
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 5px; /* Rounded rectangle */
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease, width 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--white-bg);
+    width: 50px; /* Active dot is wider */
+}
+
+/* --- About Section --- */
+.about-section {
+    padding: 80px 20px;
+    background-color: var(--white-bg); /* White background */
+    text-align: left; /* Align text */
+}
+
+.about-content {
+    display: flex;
+    flex-direction: row; /* Default layout */
+    gap: 50px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    color: var(--dark-text);
+    margin-bottom: 25px;
+}
+
+.about-text p {
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: rgba(51, 51, 51, 0.9);
+    margin-bottom: 15px;
+}
+
+.about-image {
+    flex-shrink: 0;
+    width: 400px; /* Placeholder for an image */
+    height: 250px;
+    background-color: #f0f0f0; /* Placeholder background */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #777;
+    font-style: italic;
+    /* If you add an image: */
+    /* background-image: url('your-about-image.png'); */
+    /* background-size: cover; */
+    /* background-position: center; */
+}
+
+/* --- CTA Bottom Section --- */
+.cta-bottom-section {
+    background-color: var(--light-blue-bg); /* Consistent light blue background */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.cta-bottom-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    color: var(--dark-text);
+    margin-bottom: 15px;
+    position: static; /* Remove inline style position */
+}
+
+.cta-bottom-content p {
+    font-size: 1.1em;
+    color: rgba(51, 51, 51, 0.9);
+    margin-bottom: 30px;
+    position: static; /* Remove inline style position */
+}
+
+.cta-bottom-section .diagnosis-dropdown .diagnosis-dropbtn {
+    /* Re-use main diagnosis button styles, override if needed */
+    position: static; /* Remove inline style position */
+}
+
+
+/* --- Footer Styling --- */
+.site-footer {
+    background-color: var(--dark-text); /* Darker footer */
+    color: var(--light-text);
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.footer-links a {
+    color: var(--light-text);
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-teal);
+}
+
+.footer-copyright {
+    margin-top: 15px;
+    line-height: 1.5;
+    opacity: 0.8;
+}
+
+/* --- Utility Classes / Misc --- */
+.section-divider {
+    border: none;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 0; /* Remove default margin */
+}
+
+/* --- Popup Modal --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
+    display: flex; /* Use flexbox to center content */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--white-bg);
+    margin: auto; /* Centers the modal vertically and horizontally */
+    padding: 30px; /* More padding */
+    border: none; /* Remove border */
+    border-radius: 12px; /* More rounded */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    width: 90%; /* Adjust as needed */
+    max-width: 900px; /* Max width for larger screens */
+    position: relative;
+    overflow: hidden; /* Ensure iframe stays within */
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #666;
+    font-size: 36px; /* Larger close button */
+    font-weight: normal; /* Normal weight */
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: #333;
+}
+
+/* --- Dark Mode Styles --- */
+.dark-mode {
+    background-color: var(--dark-mode-bg) !important;
+    color: var(--dark-mode-text) !important;
+    background-image: none !important; /* Remove background image */
+}
+
+.dark-mode .main-header {
+    background-color: var(--dark-mode-header-bg) !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark-mode .logo,
+.dark-mode .logo span {
+    color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .logo img {
+    filter: brightness(0) invert(1) !important; /* Invert logo color for dark mode */
+}
+
+.dark-mode .main-nav ul li a {
+    color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .main-nav ul li a::after {
+    background-color: var(--dark-mode-accent) !important;
+}
+
+.dark-mode .main-nav ul li a:hover {
+    color: var(--dark-mode-accent) !important;
+}
+
+.dark-mode .theme-btn {
+    background: var(--dark-mode-accent) !important;
+    color: var(--dark-mode-bg) !important;
+    border-color: var(--dark-mode-accent) !important;
+}
+
+.dark-mode .theme-btn:hover {
+    background-color: var(--dark-mode-accent) !important; /* Keep same background */
+    filter: brightness(1.2); /* Slight brightness increase */
+}
+
+.dark-mode .dropbtn {
+    background-color: var(--dark-mode-button-bg) !important;
+    color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .dropbtn:hover {
+    background-color: var(--dark-mode-button-hover) !important;
+}
+
+.dark-mode .dropdown-content {
+    background-color: #2C2C2C !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark-mode .dropdown-content a {
+    color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .dropdown-content a:hover {
+    background-color: #3A3A3A !important;
+}
+
+.dark-mode .hero-text-content,
+.dark-mode .hero-text-content h1,
+.dark-mode .hero-text-content .tagline {
+    color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .hero-text-content .symp {
+    color: var(--dark-mode-accent) !important;
+}
+
+.dark-mode .welcome {
+    color: #6C7A89 !important; /* A light grey for welcome in dark mode */
+}
+
+.dark-mode .diagnosis-dropbtn {
+    background-color: var(--dark-mode-accent) !important;
+    color: var(--dark-mode-bg) !important;
+    box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3) !important;
+}
+
+.dark-mode .diagnosis-dropbtn:hover {
+    background-color: var(--dark-mode-accent) !important;
+    filter: brightness(1.1); /* Slight brightness increase */
+    box-shadow: 0 12px 25px rgba(233, 69, 96, 0.4) !important;
+}
+
+.dark-mode #features {
+    background-color: var(--dark-mode-section-bg) !important;
+}
+
+.dark-mode .section-title {
+    color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .feature-item {
+    background-color: #3B3B52 !important; /* Darker card background */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dark-mode .feature-item:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark-mode .feature-item img {
+    background-color: rgba(233, 69, 96, 0.1) !important; /* Accent background for feature icon */
+}
+
+.dark-mode .feature-description h3,
+.dark-mode .feature-description p {
+    color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .testimonial-section {
+    background-color: var(--dark-mode-header-bg) !important;
+    color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .testimonial h2,
+.dark-mode .testimonial p {
+    color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .dot {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark-mode .dot.active {
+    background-color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .about-section {
+    background-color: var(--dark-mode-bg) !important;
+}
+
+.dark-mode .about-text h2,
+.dark-mode .about-text p {
+    color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .about-image {
+    background-color: #444 !important;
+    color: #bbb !important;
+}
+
+.dark-mode .cta-bottom-section {
+    background-color: var(--dark-mode-section-bg) !important;
+}
+
+.dark-mode .cta-bottom-content h2,
+.dark-mode .cta-bottom-content p {
+    color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .site-footer {
+    background-color: #0A0A1F !important; /* Even darker footer */
+    color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .footer-links a {
+    color: var(--dark-mode-text) !important;
+}
+
+.dark-mode .footer-links a:hover {
+    color: var(--dark-mode-accent) !important;
+}
+
+.dark-mode .section-divider {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-mode .modal-content {
+    background-color: #2C2C2C !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dark-mode .close {
+    color: #EAEAEA !important;
+}
+
+/* --- Animations --- */
+@keyframes textSlideIn {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Ensure individual lines have proper delays based on new HTML structure */
+.hero-text-content h1 {
+    animation-delay: 0.7s;
+}
+.hero-text-content .tagline {
+    animation-delay: 1.5s;
+}
+.hero-text-content .diagnosis-dropdown {
+    animation-delay: 2s;
+}
+
+@keyframes highlightPulse {
+    0%, 100% {
+        color: var(--accent-teal);
+        text-shadow: 0 0 10px rgba(54, 194, 206, 0.3);
+    }
+    50% {
+        color: #94d2bd; /* Lighter shade of teal/green */
+        text-shadow: 0 0 15px rgba(148, 210, 189, 0.5);
+    }
+}
+
+/* Dark mode specific highlight pulse */
+.dark-mode .hero-text-content .symp {
+    animation: darkHighlightPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes darkHighlightPulse {
+    0%, 100% {
+        color: var(--dark-mode-accent);
+        text-shadow: 0 0 10px rgba(233, 69, 96, 0.3);
+    }
+    50% {
+        color: #F7809F; /* Lighter shade of dark mode accent */
+        text-shadow: 0 0 15px rgba(247, 128, 159, 0.5);
+    }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .hero-section {
+        flex-direction: column; /* Stack on smaller desktops */
+        padding-top: 100px;
+        text-align: center;
+    }
+
+    .hero-illustration {
+        padding-right: 0;
+        margin-bottom: 40px;
+        max-width: 80%; /* Allow image to be larger on smaller screens */
+    }
+
+    .hero-text-content {
+        max-width: 90%;
+    }
+
+    .hero-text-content h1 {
+        font-size: 3em;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust for smaller screens */
+        gap: 40px 20px;
+    }
+
+    .feature-item {
+        flex-direction: column; /* Stack icon and text within feature cards */
+        text-align: center;
+        gap: 15px;
+    }
+
+    .feature-item img {
+        margin-bottom: 10px;
+    }
+
+    .about-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .about-image {
+        width: 100%;
+        max-width: 400px; /* Constrain image size */
+        height: 200px; /* Adjust height */
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start; /* Align items to the start */
+        padding: 15px 20px;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    .main-nav {
+        width: 100%; /* Full width for navigation */
+        margin-bottom: 15px;
+    }
+
+    .main-nav ul {
+        justify-content: space-around; /* Distribute links */
+        gap: 15px;
+        flex-wrap: wrap; /* Allow wrapping */
+    }
+
+    .nav-actions {
+        width: 100%;
+        justify-content: space-around; /* Distribute buttons */
+    }
+
+    .theme-btn, .dropdown {
+        position: static; /* Remove fixed positioning */
+        transform: none;
+    }
+
+    .dropdown-content {
+        left: 50%; /* Center dropdown content */
+        transform: translateX(-50%);
+        right: auto;
+    }
+
+    .hero-section {
+        padding: 100px 20px 60px;
+    }
+
+    .hero-text-content h1 {
+        font-size: 2.8em;
+    }
+
+    .tagline {
+        font-size: 1em;
+    }
+
+    .diagnosis-dropbtn {
+        padding: 15px 30px;
+        font-size: 1em;
+    }
+
+    .section-title {
+        font-size: 2em;
+        padding-top: 60px;
+    }
+
+    .testimonial h2 {
+        font-size: 1.5em;
+    }
+
+    .testimonial p {
+        font-size: 1em;
+    }
+
+    .site-footer .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .site-footer .footer-links a {
+        margin: 0; /* Remove horizontal margin */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text-content h1 {
+        font-size: 2.2em;
+    }
+
+    .hero-illustration img {
+        max-width: 90%;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    .close {
+        font-size: 30px;
+    }
+}

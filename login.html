@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - HealthInsight Hub</title>
+  <link rel="stylesheet" href="stylee.css" />
+  <link rel="icon" type="image/x-icon" href="logos_ico.ico">
+  <style>
+    body {
+      background-color: rgb(141, 188, 212);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Lato', 'Roboto', sans-serif;
+      margin: 0;
+    }
+
+    .login-container {
+      background-color:rgb(153, 196, 217);
+      padding: 3rem 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #2563eb;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: #1f2937;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 8px;
+      border: 1px solid #cbd5e0;
+      font-size: 1rem;
+    }
+
+    .login-btn {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 1rem;
+      transition: background 0.3s;
+    }
+
+    .login-btn:hover {
+      background-color: #1d4ed8;
+    }
+
+    .extra-links {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .extra-links a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .extra-links a:hover {
+      text-decoration: underline;
+    }
+    .logoo{
+      position: relative;
+      
+    }
+    .loggo{
+      position:relative;
+      left:140px;
+      bottom:30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <img src="output-onlinepngtools (1).png" width="140px"  class="loggo">
+    <form action="#" method="POST">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required placeholder="••••••••" />
+      </div>
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+    <div class="extra-links">
+      <p>Don't have an account? <a href="#">Sign up</a></p>
+      <p><a href="#">Forgot password?</a></p>
+    </div>
+  </div>
+
+</body>
+</html>

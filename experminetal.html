@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Text Animation</title>
+    <link rel="icon" type="image/x-icon" href="logos_ico.ico">
+    <style>
+ 
+
+        .text-display {
+            text-align: center;
+            padding: 40px;
+            position: relative;
+            max-width: 800px;
+        }
+
+        .text-animation {
+            position: relative;
+            display: inline-block;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #005f73;
+            text-shadow: 
+                1px 1px 0 #fff,
+                2px 2px 0 rgba(0,95,115,0.2);
+            letter-spacing: 1.5px;
+            animation: float 4s ease-in-out infinite;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .text-animation::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -30px;
+            right: -30px;
+            bottom: -20px;
+            background: rgba(255,255,255,0.95);
+            z-index: -1;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,95,115,0.08);
+            border: 1px solid rgba(0,95,115,0.05);
+        }
+
+        .subtext {
+            font-size: 1.8rem;
+            margin-top: 25px;
+            color: #0a9396;
+            font-weight: 500;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+        }
+
+        .subtext::after {
+            content: '';
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            bottom: -8px;
+            height: 2px;
+            background: #94d2bd;
+            animation: underlinePulse 3s infinite ease-in-out;
+            border-radius: 2px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes underlinePulse {
+            0%, 100% { opacity: 0.3; width: 80%; margin-left: 10%; }
+            50% { opacity: 0.8; width: 80%; margin-left: 10%; }
+        }
+
+        .char {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: charAppear 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
+
+        @keyframes charAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .text-animation {
+                font-size: 2.5rem;
+            }
+            .subtext {
+                font-size: 1.4rem;
+            }
+            .text-animation::before {
+                top: -10px;
+                left: -20px;
+                right: -20px;
+                bottom: -15px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="text-display">
+    <div class="text-animation" id="main-text">HealthVision</div>
+    <div class="subtext" id="sub-text">Your complete care companion</div>
+</div>
+
+<script>
+function animateText(element, delay = 0) {
+    const text = element.textContent;
+    element.innerHTML = '';
+    
+    for (let i = 0; i < text.length; i++) {
+        const char = document.createElement('span');
+        char.className = 'char';
+        char.textContent = text[i];
+        char.style.animationDelay = `${delay + i * 0.04}s`;
+        element.appendChild(char);
+    }
+}
+
+window.addEventListener('load', () => {
+    animateText(document.getElementById('main-text'));
+    animateText(document.getElementById('sub-text'), 0.2);
+});
+</script>
+
+</body>
+</html>

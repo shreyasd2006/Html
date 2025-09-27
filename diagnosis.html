@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Health Helper</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="logos_ico.ico">
+</head>
+<body>
+
+<header>
+  <h1>Interactive Health Symptom Checker</h1>
+  <p class="disclaimer">Disclaimer: This is a conceptual tool and not a substitute for professional medical advice. Always consult a doctor for diagnosis and treatment.</p>
+</header>
+
+<main>
+  <div class="body-selector">
+    <button id="showMaleBtn" class="active">Male Body</button>
+    <button id="showFemaleBtn">Female Body</button>
+  </div>
+
+  <div id="bodyContainer">
+    <svg id="maleBody" class="body-svg visible" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+      <title>Male Body</title>
+      <ellipse id="male-head" class="body-part" cx="100" cy="40" rx="30" ry="30" data-part-name="Head"/>
+      <rect id="male-neck" class="body-part" x="90" y="70" width="20" height="15" data-part-name="Neck"/>
+      <path id="male-torso" class="body-part" d="M70,85 L130,85 L140,180 L60,180 Z" data-part-name="Torso/Chest/Abdomen"/>
+      <rect id="male-chest" class="body-part" x="75" y="90" width="50" height="40" fill-opacity="0" stroke="none" data-part-name="Chest"/>
+      <rect id="male-abdomen" class="body-part" x="75" y="135" width="50" height="40" fill-opacity="0" stroke="none" data-part-name="Abdomen"/>
+      <path id="male-arm-left" class="body-part" d="M70,95 L50,110 L40,190 L60,185 Z" data-part-name="Left Arm"/>
+      <path id="male-arm-right" class="body-part" d="M130,95 L150,110 L160,190 L140,185 Z" data-part-name="Right Arm"/>
+      <path id="male-leg-left" class="body-part" d="M60,180 L75,180 L70,350 L50,340 Z" data-part-name="Left Leg"/>
+      <path id="male-leg-right" class="body-part" d="M125,180 L140,180 L150,340 L130,350 Z" data-part-name="Right Leg"/>
+    </svg>
+
+    <svg id="femaleBody" class="body-svg" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+      <title>Female Body</title>
+      <ellipse id="female-head" class="body-part" cx="100" cy="40" rx="30" ry="30" data-part-name="Head"/>
+      <rect id="female-neck" class="body-part" x="92" y="70" width="16" height="15" data-part-name="Neck"/>
+      <path id="female-torso" class="body-part" d="M75,85 Q100,95 125,85 L135,185 L65,185 Z" data-part-name="Torso/Chest/Abdomen"/>
+      <rect id="female-chest" class="body-part" x="78" y="95" width="44" height="40" fill-opacity="0" stroke="none" data-part-name="Chest"/>
+      <rect id="female-abdomen" class="body-part" x="78" y="140" width="44" height="40" fill-opacity="0" stroke="none" data-part-name="Abdomen"/>
+      <path id="female-arm-left" class="body-part" d="M75,95 L55,110 L45,190 L65,185 Z" data-part-name="Left Arm"/>
+      <path id="female-arm-right" class="body-part" d="M125,95 L145,110 L155,190 L135,185 Z" data-part-name="Right Arm"/>
+      <path id="female-leg-left" class="body-part" d="M65,185 L80,185 Q75,280 70,350 L50,340 Q55,280 65,185 Z" data-part-name="Left Leg"/>
+      <path id="female-leg-right" class="body-part" d="M120,185 L135,185 Q145,280 150,340 L130,350 Q125,280 120,185 Z" data-part-name="Right Leg"/>
+    </svg>
+  </div>
+
+  <div id="resultArea">
+    <h2>Possible Diagnosis / Next Steps:</h2>
+    <p id="resultText">Click on a body part to start.</p>
+  </div>
+</main>
+
+<div id="qaModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3 id="modalTitle">Question</h3>
+    <p id="questionText">This is where the question will appear.</p>
+    <div id="answerOptions">
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

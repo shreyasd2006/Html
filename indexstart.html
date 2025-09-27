@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Gender</title>
+  <link rel="icon" type="image/x-icon" href="logos_ico.ico">
+  <style>
+    body {
+      background-color: rgb(180, 223, 245);
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+    }
+
+    .title {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #003e52;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      gap: 100px;
+    }
+
+    .gender-block {
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .gender-block:hover {
+      transform: scale(1.1);
+    }
+
+    .gender-text {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #003e52;
+    }
+
+    img.gender-icon {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<img class="logo" src="logos.png" alt="Logo">
+<div class="title">Select Your Gender</div>
+
+<div class="container">
+  <div class="gender-block">
+    <a href="indexM.html" target="_blank">
+      <img class="gender-icon" src="male-active.png" alt="Male">
+    </a>
+    <div class="gender-text">Male</div>
+  </div>
+  <div class="gender-block">
+    <a href="index.html" target="_blank">
+      <img class="gender-icon" src="female-active.png" alt="Female">
+    </a>
+    <div class="gender-text">Female</div>
+  </div>
+</div>
+</body>
+</html>

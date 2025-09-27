@@ -1,0 +1,235 @@
+/* Basic Reset & Body Style */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f7f6;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+header {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 15px;
+  background-color: #007bff; /* Modern blue */
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  margin-bottom: 10px;
+}
+
+.disclaimer {
+  font-size: 0.85em;
+  font-style: italic;
+  color: #e0e0e0;
+}
+
+
+main {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Body Selector Buttons */
+.body-selector {
+  margin-bottom: 20px;
+}
+
+.body-selector button {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border: 1px solid #007bff;
+  background-color: #f8f9fa;
+  color: #007bff;
+  margin: 0 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.body-selector button:hover {
+  background-color: #e2e6ea;
+}
+
+.body-selector button.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+
+/* SVG Body Styles */
+#bodyContainer {
+  position: relative; /* Needed for absolute positioning if we overlay things later */
+  width: 300px; /* Adjust as needed */
+  height: 600px; /* Adjust as needed */
+  margin-bottom: 30px;
+}
+
+.body-svg {
+  width: 100%;
+  height: 100%;
+  display: none; /* Hide all SVGs by default */
+  stroke: #666;
+  stroke-width: 1;
+  fill: #e0e0e0; /* Light grey fill */
+}
+
+.body-svg.visible {
+  display: block; /* Show the active SVG */
+}
+
+.body-part {
+  cursor: pointer;
+  transition: fill 0.2s ease-in-out, stroke-width 0.2s ease-in-out;
+  fill: #b0c4de; /* Light steel blue for parts */
+  stroke: #4682b4; /* Steel blue stroke */
+  stroke-width: 1.5;
+}
+
+.body-part:hover {
+  fill: #add8e6; /* Light blue on hover */
+  stroke-width: 2.5;
+  stroke: #0056b3; /* Darker blue stroke on hover */
+}
+
+/* Result Area */
+#resultArea {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+#resultArea h2 {
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+#resultText {
+  font-size: 1.1em;
+  color: #555;
+}
+
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 30px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  position: relative;
+  animation: slideIn 0.3s ease-out;
+}
+
+.close-btn {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#modalTitle {
+  margin-bottom: 15px;
+  color: #0056b3;
+  text-align: center;
+}
+
+#questionText {
+  margin-bottom: 25px;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+#answerOptions {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 10px; /* Space between buttons */
+  align-items: center; /* Center buttons */
+}
+
+#answerOptions button {
+  padding: 12px 25px;
+  font-size: 1em;
+  cursor: pointer;
+  border: 1px solid #007bff;
+  background-color: #ffffff;
+  color: #007bff;
+  border-radius: 5px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  width: 80%; /* Make buttons reasonably wide */
+  max-width: 300px;
+}
+
+#answerOptions button:hover {
+  background-color: #e9f5ff; /* Light blue background on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Simple Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideIn {
+  from {transform: translateY(-50px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
+
+.modal.fade-out {
+  animation: fadeOut 0.3s ease-out forwards;
+}
