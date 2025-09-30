@@ -1,126 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Female Interactive Body Diagnostic Tool</title>
-  <link rel="preload" href="Female_Body_Front.png" as="image">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Segoe+UI&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/x-icon" href="logos_ico.ico">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HealthInsight Hub: Interactive health symptom checker for educational use. No data stored. Not a replacement for medical advice.">
+    <meta name="robots" content="index, follow">
+    <title>HealthInsight Hub</title> <link rel="stylesheet" href="new_Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="logos_ico.ico">
 </head>
+
+
 <body>
-<div class="header">
-  <a href="New_final.html" target="_blank" class="logo-link">
-    <img src="logos.png" alt="logo" class="logo-main">
+
+<div id="header">
+  <a href="New_final.html">
+    <img src="output-onlinepngtools (1).png" alt="HealthInsight Hub LOGO" width="130px" id="logo">
   </a>
-  <h1>Female Interactive Body Diagnostic</h1>
-  <p class="subtitle">Select a body part to identify potential health concerns and receive guidance on possible conditions.</p>
-</div>
-
-<div class="view-selector">
-  <button class="animated-button active" id="front-view-btn" aria-label="Switch to front view">
-    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-    </svg>
-    <span class="text">Front View</span>
-    <span class="circle"></span>
-    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-    </svg>
-  </button>
-  <button class="animated-button" id="back-view-btn" aria-label="Switch to back view">
-    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-    </svg>
-    <span class="text">Back View</span>
-    <span class="circle"></span>
-    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-    </svg>
-  </button>
-</div>
-
-<div class="main-container">
-  <div class="body-container-wrapper">
-    <div class="body-container" id="front-view">
-      <img src="Female_Body_Front.png" alt="Female Body Front" class="body-img">
-      <img src="Left_Shoulder1.png" alt="Left Shoulder" class="hotspot shoulder-left" data-part="left-shoulder" title="Left Shoulder" aria-label="Select left shoulder for diagnosis">
-      <img src="Right_Shoulder1.png" alt="Right Shoulder" class="hotspot shoulder-right" data-part="right-shoulder" title="Right Shoulder" aria-label="Select right shoulder for diagnosis">
-      <img src="Left_Hand1.png" alt="Left Hand" class="hotspot hand-left" data-part="left-hand" title="Left Hand" aria-label="Select left hand for diagnosis">
-      <img src="Right_Hand1.png" alt="Right Hand" class="hotspot hand-right" data-part="right-hand" title="Right Hand" aria-label="Select right hand for diagnosis">
-      <img src="Hip1.png" alt="Hip" class="hotspot hip" data-part="hip" title="Hip" aria-label="Select hip for diagnosis">
-      <img src="Knee1.png" alt="Knee" class="hotspot knee" data-part="knee" title="Knee" aria-label="Select knee for diagnosis">
-      <img src="Left_Foot1.png" alt="Left Foot" class="hotspot foot-left" data-part="left-foot" title="Left Foot" aria-label="Select left foot for diagnosis">
-      <img src="Right_Foot1.png" alt="Right Foot" class="hotspot foot-right" data-part="right-foot" title="Right Foot" aria-label="Select right foot for diagnosis">
+    <div id="header-tags">
+        <a href="#hero" style="text-decoration:none; color:rgb(31, 85, 139);">Home</a>
+        <a href="#about" style="text-decoration:none; color:rgb(31, 85, 139);">About</a>
+        <a href="#features" style="text-decoration:none; color:rgb(31, 85, 139);">Features</a>
+        <a href="#faq" style="text-decoration:none; color:rgb(31, 85, 139);">FAQ</a>
     </div>
 
-    <div class="body-container" id="back-view" style="display: none;">
-      <div class="back-selection">
-        <button class="animated-button back-btn-animated" data-part="spine" title="Spine Issues" aria-label="Diagnose spine issues">
-          <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-          </svg>
-          <span class="text">Spine Issues</span>
-          <span class="circle"></span>
-          <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-          </svg>
-        </button>
-        <button class="animated-button back-btn-animated" data-part="lower-back" title="Lower Back Issues" aria-label="Diagnose lower back issues">
-          <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-          </svg>
-          <span class="text">Lower Back Issues</span>
-          <span class="circle"></span>
-          <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-          </svg>
-        </button>
+    <div class="dropdown">
+      <button class="dropbtn">Login</button>
+        <div class="dropdown-content">
+          <a href="user_login.html" target="_blank">User</a>
+          <a href="admin_login.html" target="_blank">Admin</a>
+        </div>
+    </div>
+  </div>
+<!--Main body-->
+<section id="hero" class="hero-section fade-in" >
+<div class="hero-illustration">
+<img src="new body.png" alt="Person interacting with health app on phone" class="phone_guy" style="display: inline-block;">
+    </div>
+        <div class="hero-text-content" style="display: inline-block;">
+                <p class="welcome">Welcome to HealthInsight Hub</p>
+                <h1>
+                    Understand Your <span class="symp">Health</span>
+                    <br>
+                    <span class="symp">Symptoms</span>,
+                    Interactively
+                </h1>
+                <p class="tagline">Click through our guided visual tool to explore potential causes based on your symptoms. Simple, intuitive, and informative.</p>
+              <div class="diagnosis-dropdown" style="display: inline-block;">
+           <button class="diagnosis-dropbtn" onclick="openPopup()">Start Your Diagnosis Guide</button>
+      </div>
+</div>
+</section>
+<!-- Popup Modal Structure -->
+<div id="popupModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <iframe src="indexstart.html" frameborder="0" style="width:100%; height:80vh;"></iframe>
+  </div>
+</div>
+<div id="features">
+<div class="why">
+<h5>Why Use HealthInsight Hub?</h5>
+</div>
+<div class="interactive">
+    <img src="why.png" width="700px;" class="inter-img">
+    <p class="pp">👆 Interactive Visual Guide</p>
+    <p class="ppp">Simply click on the body area you're concerned about to begin.</p>
+</div>
+<br><br>
+<br><br>
+<div class="ques">
+    <img src="Guiding-Questions.png"  class="guided_img">
+    <p class="pp1">🗨 Guided Questions</p>
+    <p class="ppp1">Answer straightforward questions that </p>
+    <p class="pppp1">adapt based on your responses.</p>
+</div>
+<br><br>
+<br><br>
+<div class="poten">
+    <img src="insights.avif" class="bulb" >
+    <p class="pp2">💡 Potential Insights</p>
+    <p class="ppp2">Receive suggestions about possible conditions about your symptoms.</p>
+</div>
+<br><br>
+<br><br>
+<div class="privacy">
+    <img src="privacy.png"  class="priv">
+    <p class="pp3">🛡️ Privacy Focused</p>
+    <p class="ppp3">No personal data is stored. Your exploration</p>
+    <p class="pppp3"> is completely anonymous.</p>
+</div>
+</div>
+</section>
+<hr >
+<br>
+<br>
+<br>
+<div class="faq_heading">
+<h2>Frequently Asked Questions</h2>
+</div>
+<section id="faq" class="testimonial-section">
+  <div class="testimonial-container">
+    <div class="testimonial active">
+      <h2>Is this tool a replacement for a doctor?</h2>
+      <p>For information only — not a substitute for medical advice. Always consult a healthcare professional.</p>
+    </div>
+    <div class="testimonial">
+      <h2>Is my data saved?</h2>
+      <p>This is a frontend-only app. No data is collected, stored, or sent—everything stays in your browser.</p>
+    </div>
+    <div class="testimonial">
+      <h2> How accurate are the suggestions?</h2>
+      <p>This tool can't consider your full medical context. Its suggestions are limited and should only guide conversations with your doctor.</p>
+    </div>
+    <div class="testimonial">
+      <h2>Do I need to create an account?</h2>
+      <p>Not necessarily, but you will get more information like diagnosis history with an account.</p>
+    </div>
+  </div>
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</section>
+
+<section id="about" class="about-section">
+    <div class="container about-content">
+      <div class="about-text">
+        <br><br>
+        <h2>About HealthInsight Hub</h2>
+        <p>HealthInsight Hub was created as a project to explore how interactive web technologies can make health information more accessible and understandable. Our goal is to provide a user-friendly visual tool that helps individuals explore potential health concerns by guiding them through symptom-based questions.</p>
+        <p>We believe that informed users can have more productive conversations with healthcare professionals. However, this tool is purely informational and educational. It does **not** provide medical advice, diagnosis, or treatment. Always consult with a qualified doctor or healthcare provider for any health concerns.</p>
+      </div>
+      <div class="about-image">
+        <img src="about.png" style="border-radius:5%">
       </div>
     </div>
+</section>
+<br>
+<br>
+
+</main>
+<br>
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-links">
+      <a href="#about">About Us</a> |
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="footer-copyright">
+      &copy; <span id="currentYear"></span> HealthInsight Hub Project. All Rights Reserved.
+      <br>Not for actual medical use.
+    </div>
   </div>
-
-  <div class="info-panel" id="info-panel">
-    <h2>Welcome to the Female Interactive Diagnostic Tool</h2>
-    <p class="info-text"><i class="fas fa-hand-pointer"></i> Please select a body part to begin the diagnostic process. Our system will ask you a series of questions to help identify potential conditions related to your symptoms.</p>
-    <p class="info-text"><i class="fas fa-exclamation-circle"></i> This tool is designed for educational purposes only and should not replace professional medical advice.</p>
-
-    <div class="diagnostic-flow" id="diagnostic-flow"></div>
-    <div class="results-container" id="results-container"></div>
-  </div>
-</div>
-
-<div id="feedback-message" class="feedback-message"></div>
-
-<footer class="footer">
-  <p>This tool is for educational purposes only. Consult a healthcare professional for medical advice.</p>
-  <p>&copy; <span id="current-year">2024</span> Health Insight Hub. All Rights Reserved.</p>
 </footer>
 
-<div class="custom-alert-overlay" id="custom-alert-overlay" style="display: none;">
-  <div class="notifications-container" id="custom-alert-box">
-    <div class="success"> <div class="flex">
-      <div class="flex-shrink-0">
-        <svg class="succes-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-        </svg>
-      </div>
-      <div class="success-prompt-wrap">
-        <p class="success-prompt-heading" id="custom-alert-heading">Diagnosis in Progress</p>
-        <div class="success-prompt-prompt">
-          <p id="custom-alert-message">Please complete the current diagnosis before selecting another body part or changing the view.</p>
-        </div>
-        <div class="success-button-container">
-          <button type="button" class="success-button-secondary" id="custom-alert-dismiss-btn">Dismiss</button>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
-<script src="scriptuid.js"></script>
+<script>
+
+  const testimonials = document.querySelectorAll('.testimonial');
+  const dots = document.querySelectorAll('.dot');
+  let currentIndex = 0;
+
+  function showTestimonial(index) {
+    testimonials.forEach((t, i) => {
+      t.classList.toggle('active', i === index);
+      dots[i].classList.toggle('active', i === index);
+    });
+  }
+
+  function nextTestimonial() {
+    currentIndex = (currentIndex + 1) % testimonials.length;
+    showTestimonial(currentIndex);
+  }
+
+  setInterval(nextTestimonial, 4000); 
+   function openPopup() {
+    document.getElementById('popupModal').style.display = 'block';
+  }
+  function closePopup() {
+    document.getElementById('popupModal').style.display = 'none';
+  }
+  window.onclick = function(event) {
+    const modal = document.getElementById('popupModal');
+    if (event.target === modal) {
+      closePopup();
+    }
+  }
+</script>
 </body>
 </html>
